@@ -7,6 +7,8 @@ module "vpc" {
 
   cidr_block = var.cidr_block
   availability_zones = var.availability_zones
+  owner = var.owner
+  owner_no_email = var.owner_no_email
 
 }
 
@@ -58,6 +60,8 @@ module "alb" {
   public_subnet_2_id = module.vpc.public_subnet_2_id
   vpc_id             = module.vpc.vpc_id
   web_server_sg      = aws_security_group.webserver_sg.id
+  owner = var.owner
+  owner_no_email = var.owner_no_email
 }
 
 ########################## Setting up autoscaling group ##############################
@@ -69,6 +73,8 @@ module "auto_scaling" {
   private_subnet_2_id = module.vpc.private_subnet_2_id
   target_group_arn    = module.alb.target_group_arn
   webserver_sg        = aws_security_group.webserver_sg.id
+  owner = var.owner
+  owner_no_email = var.owner_no_email
 }
 
 
