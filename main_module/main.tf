@@ -1,21 +1,9 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
 
-# Configure the AWS Provider
-provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_profile
-}
 
 ################ Start vpc Set-Up #######################
 
 module "vpc" {
-  source = "./vpc"
+  source = "../vpc"
 
   cidr_block = "10.0.0.0/16"
   availability_zones = ["eu-west-1a", "eu-west-1b", "eu-west-1c"]
@@ -64,7 +52,7 @@ resource "aws_security_group" "webserver_sg" {
 
 ########################################## Stiing up ALB ###################################
 module "alb" {
-  source = "./alb"
+  source = "../alb"
 
   public_subnet_1_id = module.vpc.public_subnet_1_id
   public_subnet_2_id = module.vpc.public_subnet_2_id
@@ -75,7 +63,7 @@ module "alb" {
 ########################## Setting up autoscaling group ##############################
 
 module "auto_scaling" {
-  source = "./auto_scaling"
+  source = "../auto_scaling"
 
   private_subnet_1_id = module.vpc.private_subnet_1_id
   private_subnet_2_id = module.vpc.private_subnet_2_id

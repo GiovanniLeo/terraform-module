@@ -10,12 +10,10 @@ variable "instance_ami" {
 
 variable "owner" {
   type = string
-  default = "gi.leo@reply.it"
 }
 
 variable "owner_no_email" {
   type = string
-  default = "gi-leo"
 }
 
 
