@@ -1,18 +1,3 @@
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-    }
-  }
-}
-
-# Configure the AWS Provider
-provider "aws" {
-  region  = var.aws_region
-  profile = var.aws_profile
-}
-
-
 
 resource "aws_security_group" "alb_sg" {
   name        = "AlbSecurityGroup"
