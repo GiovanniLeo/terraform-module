@@ -8,14 +8,6 @@ variable "instance_ami" {
   default = "ami-02c80cf04a871f641"
 }
 
-variable "aws_region" {
-  type    = string
-}
-
-variable "aws_profile" {
-  type    = string
-}
-
 variable "owner" {
   type = string
   default = "gi.leo@reply.it"

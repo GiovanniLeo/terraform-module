@@ -1,11 +1,3 @@
-variable "aws_region" {
-  type    = string
-}
-
-variable "aws_profile" {
-  type    = string
-}
-
 variable "owner" {
   type = string
   default = "gi.leo@reply.it"
